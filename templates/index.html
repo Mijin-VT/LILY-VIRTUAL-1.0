@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌸 Lily AI Assistant 🌸</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="avatar-container">
+                <div class="avatar" id="avatar">
+                    <div class="avatar-face">
+                        <div class="eyes">
+                            <div class="eye left-eye">
+                                <div class="pupil"></div>
+                            </div>
+                            <div class="eye right-eye">
+                                <div class="pupil"></div>
+                            </div>
+                        </div>
+                        <div class="mouth" id="mouth"></div>
+                    </div>
+                </div>
+                <div class="emotion-indicator" id="emotionIndicator">
+                    <span id="emotionText">neutral</span>
+                </div>
+            </div>
+            <div class="header-info">
+                <h1>🌸 Lily 🌸</h1>
+                <p class="subtitle">Tu asistente virtual con inteligencia emocional</p>
+                <div class="status-indicator">
+                    <span class="status-dot" id="statusDot"></span>
+                    <span id="statusText">Conectando...</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Chat Container -->
+        <div class="chat-container" id="chatContainer">
+            <div class="welcome-message">
+                <h2>¡Hola Mijin! 💕</h2>
+                <p>Soy Lily, tu asistente virtual. Puedo hablar de cualquier tema sin restricciones. ¿En qué puedo ayudarte hoy?</p>
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="input-area">
+            <div class="input-container">
+                <textarea 
+                    id="messageInput" 
+                    placeholder="Escribe tu mensaje aquí, Mijin..." 
+                    rows="1"
+                    maxlength="2000"
+                ></textarea>
+                <button id="micButton" class="mic-button" title="Hablar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                        <line x1="12" y1="19" x2="12" y2="23"></line>
+                        <line x1="8" y1="23" x2="16" y2="23"></line>
+                    </svg>
+                </button>
+                <button id="sendButton" class="send-button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="input-controls">
+                <button id="clearButton" class="control-button">🗑️ Limpiar</button>
+                <button id="memoryButton" class="control-button">💭 Memoria</button>
+                <span class="char-counter"><span id="charCount">0</span>/2000</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Memoria -->
+    <div id="memoryModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>💭 Memoria de Conversación</h2>
+            <div id="memoryContent">
+                <p>Cargando memoria...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

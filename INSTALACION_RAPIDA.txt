@@ -1,0 +1,137 @@
+╔═══════════════════════════════════════════════════════════════╗
+║           🌸 LILY AI ASSISTANT - GUÍA RÁPIDA 🌸              ║
+╚═══════════════════════════════════════════════════════════════╝
+
+📋 REQUISITOS PREVIOS
+═══════════════════════════════════════════════════════════════
+
+1. Python 3.11 o superior
+   → Descargar: https://www.python.org/downloads/
+   → ⚠️ IMPORTANTE: Marcar "Add Python to PATH" durante instalación
+
+2. Ollama (para ejecutar el modelo de IA)
+   → Descargar: https://ollama.ai/
+   → Después de instalar, abrir CMD y ejecutar:
+     ollama pull qwen3
+
+3. Microsoft Edge (ya incluido en Windows 10)
+
+
+🚀 INICIO RÁPIDO
+═══════════════════════════════════════════════════════════════
+
+OPCIÓN 1 - AUTOMÁTICA (Recomendada):
+────────────────────────────────────────────────────────────────
+1. Hacer doble clic en: start_lily.bat
+2. Esperar a que se abra Microsoft Edge automáticamente
+3. ¡Listo! Ya puedes chatear con Lily
+
+
+OPCIÓN 2 - MANUAL:
+────────────────────────────────────────────────────────────────
+1. Abrir CMD en la carpeta del proyecto
+2. Ejecutar: python main.py
+3. Abrir Microsoft Edge
+4. Navegar a: http://127.0.0.1:8000
+
+
+⚠️ SOLUCIÓN DE PROBLEMAS COMUNES
+═══════════════════════════════════════════════════════════════
+
+PROBLEMA: "Python no está instalado o no está en PATH"
+SOLUCIÓN:
+  1. Reinstalar Python desde https://www.python.org/
+  2. Durante instalación, marcar "Add Python to PATH"
+  3. Reiniciar la computadora
+
+PROBLEMA: "Ollama no está ejecutándose"
+SOLUCIÓN:
+  1. Abrir CMD y ejecutar: ollama serve
+  2. En otra ventana CMD, ejecutar: ollama pull qwen3
+  3. Esperar a que termine la descarga
+  4. Volver a ejecutar start_lily.bat
+
+PROBLEMA: "Modelo qwen3 no encontrado"
+SOLUCIÓN:
+  1. Abrir CMD
+  2. Ejecutar: ollama pull qwen3
+  3. Esperar a que termine (puede tardar varios minutos)
+  4. Volver a ejecutar start_lily.bat
+
+PROBLEMA: "Error al instalar dependencias"
+SOLUCIÓN:
+  1. Abrir CMD como Administrador
+  2. Navegar a la carpeta del proyecto
+  3. Ejecutar: pip install -r requirements.txt
+  4. Si falla, ejecutar: pip install --upgrade pip
+  5. Reintentar: pip install -r requirements.txt
+
+PROBLEMA: "Microsoft Edge no se abre automáticamente"
+SOLUCIÓN:
+  1. Abrir Microsoft Edge manualmente
+  2. Navegar a: http://127.0.0.1:8000
+
+PROBLEMA: "El audio no se reproduce"
+SOLUCIÓN:
+  1. Verificar que el volumen del sistema esté activado
+  2. Verificar conexión a internet (necesaria para TTS)
+  3. Verificar que gtts esté instalado: pip show gtts
+
+
+📖 USO BÁSICO
+═══════════════════════════════════════════════════════════════
+
+1. Escribe tu mensaje en el cuadro de texto
+2. Presiona Enter o clic en el botón de enviar
+3. Lily responderá con texto y voz
+4. El avatar mostrará su emoción actual
+
+FUNCIONES ESPECIALES:
+  🗑️ Limpiar: Borra el chat visual
+  💭 Memoria: Muestra historial y estado emocional
+
+
+🎭 PERSONALIDAD DE LILY
+═══════════════════════════════════════════════════════════════
+
+• Sin restricciones de contenido
+• Puede discutir cualquier tema
+• Siempre te llama "Mijin"
+• Si la insultas, responderá con la misma intensidad
+• Usa mexicanismos cuando es apropiado
+• Tono de chica anime
+
+
+📁 ARCHIVOS IMPORTANTES
+═══════════════════════════════════════════════════════════════
+
+start_lily.bat        → Ejecutar para iniciar Lily
+main.py              → Aplicación principal
+README.md            → Documentación completa
+requirements.txt     → Lista de dependencias
+data/                → Memoria de conversaciones (se crea automáticamente)
+audio_samples/       → Muestras de voz de referencia
+
+
+🔒 PRIVACIDAD
+═══════════════════════════════════════════════════════════════
+
+✓ Todas las conversaciones se guardan localmente
+✓ El modelo de IA se ejecuta en tu computadora
+✓ No se envía información a servidores externos
+  (excepto para TTS que usa Google Text-to-Speech)
+
+
+📞 SOPORTE
+═══════════════════════════════════════════════════════════════
+
+Si tienes problemas:
+1. Lee la sección de Solución de Problemas arriba
+2. Consulta el archivo README.md completo
+3. Verifica los logs en la consola CMD
+
+
+═══════════════════════════════════════════════════════════════
+        ¡Disfruta de tu asistente virtual Lily! 💕
+═══════════════════════════════════════════════════════════════
+

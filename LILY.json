@@ -1,0 +1,454 @@
+{
+  "name": "Lily Assistant Workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "webhook-trigger-1",
+      "name": "HTTP Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ],
+      "webhookId": "lily-webhook"
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "response",
+              "value": "Processing your request..."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "set-default-response-1",
+      "name": "Set Default Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        460,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftSide": {
+              "mode": "value"
+            },
+            "rightSide": {
+              "mode": "value"
+            }
+          },
+          "conditions": [
+            {
+              "id": "condition-1",
+              "leftSide": {
+                "value": "={{$json.message}}",
+                "mode": "value"
+              },
+              "rightSide": {
+                "value": "hello",
+                "mode": "value"
+              },
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "hello-condition-1",
+      "name": "Check for Hello",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        680,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "response",
+              "value": "Hello! How can I assist you today?"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "hello-response-1",
+      "name": "Hello Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        900,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftSide": {
+              "mode": "value"
+            },
+            "rightSide": {
+              "mode": "value"
+            }
+          },
+          "conditions": [
+            {
+              "id": "condition-2",
+              "leftSide": {
+                "value": "={{$json.message}}",
+                "mode": "value"
+              },
+              "rightSide": {
+                "value": "time",
+                "mode": "value"
+              },
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "time-condition-1",
+      "name": "Check for Time",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        680,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "response",
+              "value": "={{ new Date().toLocaleString() }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "time-response-1",
+      "name": "Time Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        900,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftSide": {
+              "mode": "value"
+            },
+            "rightSide": {
+              "mode": "value"
+            }
+          },
+          "conditions": [
+            {
+              "id": "condition-3",
+              "leftSide": {
+                "value": "={{$json.message}}",
+                "mode": "value"
+              },
+              "rightSide": {
+                "value": "weather",
+                "mode": "value"
+              },
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "weather-condition-1",
+      "name": "Check for Weather",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        680,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "response",
+              "value": "I can help with weather information. Please specify a location."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "weather-response-1",
+      "name": "Weather Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        900,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "/get-weather",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "get-weather-http-1",
+      "name": "Get Weather HTTP",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        1120,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "response",
+              "value": "I don't understand that command. Can you try again?"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "default-response-1",
+      "name": "Default Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        900,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "response",
+              "value": "={{$json.response}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "final-response-1",
+      "name": "Final Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "response_body": "={{$json.response}}",
+        "options": {}
+      },
+      "id": "http-response-1",
+      "name": "HTTP Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "HTTP Trigger": {
+      "main": [
+        [
+          {
+            "node": "Set Default Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Default Response": {
+      "main": [
+        [
+          {
+            "node": "Check for Hello",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check for Hello": {
+      "main": [
+        [
+          {
+            "node": "Hello Response",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Check for Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hello Response": {
+      "main": [
+        [
+          {
+            "node": "Final Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check for Time": {
+      "main": [
+        [
+          {
+            "node": "Time Response",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Check for Weather",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Time Response": {
+      "main": [
+        [
+          {
+            "node": "Final Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check for Weather": {
+      "main": [
+        [
+          {
+            "node": "Weather Response",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Default Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Weather Response": {
+      "main": [
+        [
+          {
+            "node": "Get Weather HTTP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Weather HTTP": {
+      "main": [
+        [
+          {
+            "node": "Final Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Response": {
+      "main": [
+        [
+          {
+            "node": "Final Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Final Response": {
+      "main": [
+        [
+          {
+            "node": "HTTP Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "1",
+  "triggerCount": 1,
+  "tags": [
+    "Lily",
+    "Assistant",
+    "AI"
+  ]
+}

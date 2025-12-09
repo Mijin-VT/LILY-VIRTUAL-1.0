@@ -1,0 +1,12 @@
+fastapi==0.115.6
+uvicorn==0.34.0
+pydantic==2.10.5
+pydantic-settings==2.11.0
+aiofiles==25.1.0
+python-multipart==0.0.20
+gtts==2.5.4
+pydub==0.25.1
+SpeechRecognition==3.14.3
+textblob==0.19.0
+requests==2.32.3
+
